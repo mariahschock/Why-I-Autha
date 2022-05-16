@@ -33,4 +33,8 @@ export async function checkAuth() {
 
 export async function redirectIfLoggedIn() {}
 
-export async function logout() {}
+export async function logout() {
+    await client.auth.signOut();
+
+    return (window.location.href = '/');
+}
