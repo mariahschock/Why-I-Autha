@@ -22,7 +22,7 @@ export async function signInUser(email, password) {
     if (resp.user) {
         return resp.user;
     } else {
-        //console.error(resp.error);
+        console.error(resp.error);
     }
 }
 
@@ -31,7 +31,11 @@ export async function checkAuth() {
     if (!user) location.replace('/');
 }
 
-export async function redirectIfLoggedIn() {}
+export async function redirectIfLoggedIn() {
+    if (getUser()) {
+        location.replace('./other-page');
+    }
+}
 
 export async function logout() {
     await client.auth.signOut();
